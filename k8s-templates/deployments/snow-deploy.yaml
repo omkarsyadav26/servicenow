@@ -1,0 +1,31 @@
+# kubectl create -f snow-deploy.yaml
+# kubectl get deploy -l app=snow-app
+# kubectl get rs -l app=snow-app
+# kubectl get po -l app=snow-app
+# kubectl describe deploy cbs-snow-int
+#kubectl scale deployment cbs-snow-int --replicas=3
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cbs-snow-int
+  labels:
+    app: snow-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snow-app
+  template:
+    metadata:
+      labels:
+        app: snow-app
+    spec:
+      containers:
+        - name: snow-container
+          image: omkarsyadav26/cbs-snow:v1
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            tcpSocket:
+              port: 5000

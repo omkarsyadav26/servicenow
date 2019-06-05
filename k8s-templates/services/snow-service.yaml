@@ -1,0 +1,15 @@
+# kubectl create -f snow-service.yaml
+# kubectl get service -l app=snow-app
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: snow-service
+  labels:
+    app: snow-app
+spec:
+  selector:
+    app: snow-app
+  ports:
+  - port: 8080
+    targetPort: 5000
