@@ -1,5 +1,5 @@
 FROM python:alpine
-MAINTAINER omkar yadav 
+MAINTAINER omkar yadav
 #RUN apt-get update -y
 COPY . /app
 WORKDIR /app
