@@ -39,7 +39,7 @@ class Budget(Resource):
         response = requests.request(
             'POST', url, headers=headers, json=payload, auth=('admin', 'K3w1sTVeDtZl'))
         logging.info(str(response))
-        threadVar = threading.Thread(target=calling, args=(arr,))
+        threadVar = threading.Thread(target=calling)
         threadVar.start()
         return {"result": "expense line added in servicenow"}, 201
 
