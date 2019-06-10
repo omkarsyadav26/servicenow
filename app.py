@@ -3,7 +3,8 @@ from flask_restplus import Api, fields, Resource
 import requests
 from log import logging
 import json
-
+from restCall import calling
+import threading
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,6 +39,8 @@ class Budget(Resource):
         response = requests.request(
             'POST', url, headers=headers, json=payload, auth=('admin', 'K3w1sTVeDtZl'))
         logging.info(str(response))
+        threadVar = threading.Thread(target=calling, args=(arr,))
+        threadVar.start()
         return {"result": "expense line added in servicenow"}, 201
 
 
