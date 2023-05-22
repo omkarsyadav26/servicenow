@@ -1,2 +1,2 @@
 flask-restplus==0.10.0
-requests==2.21.0
+requests==2.31.0
